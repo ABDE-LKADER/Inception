@@ -1,1 +1,17 @@
-FROM debian
+volumes:
+  compose-vol:
+
+networks:
+  compose-net:
+
+services:
+  nginx:
+    image: "nginx"
+    ports:
+      - target: 80
+        published: 8080
+    networks:
+      - compose-net
+  custum:
+    build: .
+    command: -c ./run

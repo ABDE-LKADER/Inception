@@ -1,11 +1,11 @@
-FROM gcc
+FROM debian AS base
 
-RUN mkdir Project
+RUN apt update -y && apt upgrade -y && apt install build-essential -y && mkdir Project
 
 COPY run.cpp /Project
 
 WORKDIR /Project
 
-RUN c++ run.cpp
+RUN c++ run.cpp -o run && ./run
 
-ENTRYPOINT ["./a.out"]
+ENTRYPOINT ["bash"]
