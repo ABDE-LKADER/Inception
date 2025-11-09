@@ -5,13 +5,7 @@ RUN set -eux; \
 	mkdir -p /run/mysqld /var/lib/mysql; \
 	chown -R mysql:mysql /run/mysqld /var/lib/mysql
 
-# ENTRYPOINT [ "start.sh" ]
+COPY --chmod=600 conf/mariadb.conf /etc/my.cnf.d/mariadb-server.cnf
+COPY --chmod=700 tools/start.sh /usr/local/bin/
 
-# /home/$USER/data/mariadb > /var/lib/mysql/ > rw
-
-# Installing MariaDB/MySQL system tables in '/var/lib/mysql'
-# mariadb-install-db \
-#   --user=mysql \
-#   --datadir=/var/lib/mysql \
-#   --skip-test-db \
-#   --auth-root-authentication-method=normal
+ENTRYPOINT [ "/usr/local/bin/start.sh" ]
