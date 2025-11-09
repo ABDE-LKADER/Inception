@@ -1,13 +1,28 @@
+networks:
+  inception:
+
+volumes:
+  mariadb:
+
 services:
   mariadb:
     build: requirements/mariadb/
     image: mariadb:42
     container_name: "mariadb"
-    ports:
-      - "3306:3306"
     env_file: .env
+    networks:
+      - inception
     volumes:
-      - type: bind
-        source: /home/${USER}/data/mariadb
-        target: /var/lib/mysql/
+      - /Users/${USER}/data/mariadb:/var/lib/mysql/:rw              # or /home/<login>/data/mariadb for defense
     restart: on-failure
+
+  # wordpress:
+  #   build: requirements/wordpress/
+  #   image: wordpress:42
+  #   container_name: "wordpress"
+  #   env_file: .env
+  #   networks:
+  #     - inception
+  #   volumes:
+  #     - /Users/${USER}/data/wordpress:/var/lib/mysql/:rw              # or /home/<login>/data/wordpress for defense
+  #   restart: on-failure
