@@ -8,4 +8,5 @@ RUN set -eux; \
 COPY --chmod=644 conf/mariadb.conf /etc/my.cnf.d/mariadb-server.cnf
 COPY --chmod=700 tools/start.sh /usr/local/bin/
 
+EXPOSE 3306
 ENTRYPOINT [ "/usr/local/bin/start.sh" ]

@@ -1,2 +1,1 @@
 nc -zv HOST_IP PORT
-
