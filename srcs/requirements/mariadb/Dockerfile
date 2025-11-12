@@ -1,7 +1,7 @@
 FROM alpine:3.21
 
 RUN set -eux; \
-	apk add --no-cache mariadb; \
+	apk add --no-cache mariadb mariadb-client; \
 	mkdir -p /run/mysqld /var/lib/mysql; \
 	chown -R mysql:mysql /run/mysqld /var/lib/mysql
 

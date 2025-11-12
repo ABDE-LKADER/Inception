@@ -11,7 +11,6 @@ if [ ! -f "index.php" ]; then
 fi
 
 if [ ! -f "wp-config.php" ]; then
-sec.sh
 wp config create --dbname=$MYSQL_DATABASE \
     --dbuser=$MYSQL_USER \
     --dbpass=$MYSQL_PASSWORD \

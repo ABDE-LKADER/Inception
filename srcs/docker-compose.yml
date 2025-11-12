@@ -22,6 +22,12 @@ services:
     networks: [inception]
     volumes: [db_data:/var/lib/mysql/:rw]
     restart: on-failure
+    healthcheck:
+      test: mariadb-admin ping -hmariadb -u$MYSQL_USER -p$MYSQL_PASSWORD
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   wordpress:
     build: requirements/wordpress/
@@ -31,6 +37,15 @@ services:
     networks: [inception]
     volumes: [wp_data:/var/www/html/:rw]
     restart: on-failure
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    healthcheck:
+      test: nc -z wordpress 9000
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
   nginx:
     build: requirements/nginx/
@@ -41,3 +56,6 @@ services:
     volumes: [wp_data:/var/www/html/:r]
     restart: on-failure
     ports: ["443:443"]
+    depends_on:
+      wordpress:
+        condition: service_healthy
