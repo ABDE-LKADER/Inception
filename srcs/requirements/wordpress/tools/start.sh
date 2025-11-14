@@ -7,7 +7,7 @@ fi
 
 cd /var/www/html
 if [ ! -f "index.php" ]; then
-    wget -q https://wordpress.org/latest.tar.gz -O - | tar -xzf - -C . --strip-components=1
+    wget -q https://wordpress.org/latest.tar.gz -O - | tar -xzf - --strip-components=1
 fi
 
 if [ ! -f "wp-config.php" ]; then
@@ -27,4 +27,14 @@ wp user create $WP_USER $WP_USER_EMAIL \
     --user_pass=$WP_USER_PASS
 fi
 
-exec php-fpm83 -RF
+if ! wp plugin is-installed redis-cache; then
+    wp plugin install redis-cache --activate
+
+    wp config set WP_REDIS_HOST redis
+    wp config set WP_REDIS_PORT 6379
+    
+    wp redis enable
+fi
+
+chown -R nobody:nobody /var/www/html
+exec php-fpm83 -F
