@@ -12,11 +12,6 @@ volumes:
       type: none
       o: bind
       device: /home/${USER}/data/wordpress
-  portainer_data:
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/${USER}/data/portainer
 
 services:
   mariadb:
@@ -111,7 +106,6 @@ services:
       networks: [inception]
       restart: on-failure
       volumes:
-        - portainer_data:/var/portainer
         - /var/run/docker.sock:/var/run/docker.sock
 
   ftp:
@@ -127,6 +121,9 @@ services:
       networks: [inception]
       volumes: [wp_data:/var/www/html/]
       restart: on-failure
+      depends_on:
+        wordpress:
+          condition: service_healthy
       ports:
         - "21:21"
         - "21000-21010:21000-21010"
