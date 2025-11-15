@@ -4,7 +4,6 @@ all: up
 
 up:
 	sudo mkdir -p /home/${USER}/data/mariadb
-	sudo mkdir -p /home/${USER}/data/portainer
 	sudo mkdir -p /home/${USER}/data/wordpress
 	docker compose -f $(DOCKER_COMPOSE_FILE) up -d
 

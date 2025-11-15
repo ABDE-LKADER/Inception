@@ -37,4 +37,6 @@ if ! wp plugin is-installed redis-cache; then
 fi
 
 chown -R nobody:nobody /var/www/html
+chmod -R g+w /var/www/html
+
 exec php-fpm83 -F
