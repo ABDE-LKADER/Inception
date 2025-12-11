@@ -3,53 +3,47 @@
 ## Environment Setup
 To set up this environment from scratch:
 
-1.  **Prerequisites**: Ensure the host machine has `make`, `docker`, and `docker compose` installed.
-2.  **Directory Structure**: The project uses the following structure:
+1. **Prerequisites**: Ensure the host machine has `make`, `docker`, and `docker compose` installed.
+2. **Directory Structure**: The project uses the following structure:
+
     ```text
-    ├── Makefile
-    ├── srcs
-    │   ├── .env                # Environment variables (MUST BE CREATED)
-    │   ├── docker-compose.yml  # Orchestration file
-    │   └── requirements        # Service definitions
-    │       ├── mariadb
-    │       ├── nginx
-    │       ├── wordpress
-    │       └── bonus (ftp, redis, adminer, portainer, static)
+        ├── Makefile
+        ├── srcs
+        │   ├── .env                # Environment variables (MUST BE CREATED)
+        │   ├── docker-compose.yml  # Orchestration file
+        │   └── requirements        # Service definitions
+        │       ├── mariadb
+        │       ├── nginx
+        │       ├── wordpress
+        │       └── bonus (ftp, redis, adminer, portainer, static)
     ```
 
 ## Configuration (.env)
+
 The project requires a `.env` file located at `srcs/.env`. This file is **not** committed to Git for security reasons. You must create it manually using the following template.
 
 **File Path:** `srcs/.env`
 
 ```ini
-    # --- Project Configuration ---
-    # Replace 'login' with your 42 login
-    DOMAIN_NAME=login.42.fr
-
-    # --- Database Setup (MariaDB) ---
-    MYSQL_DATABASE=inception
-    MYSQL_USER=user
-    MYSQL_PASSWORD=userpass
-    MYSQL_ROOT_PASSWORD=rootpass
-
+    # --- Database Setup ---
+    MYSQL_DATABASE=database_name
+    MYSQL_HOST=mariadb
+    MYSQL_USER=database_user
+    MYSQL_PASSWORD=strong_password
+    MYSQL_ROOT_PASSWORD=root_secret
+    
     # --- WordPress Setup ---
-    WP_URL=login.42.fr
-    WP_TITLE=Inception
-    WP_ADMIN_USER=admin
-    WP_ADMIN_PASS=adminpass
-    WP_ADMIN_EMAIL=admin@student.42.fr
-    WP_USER=author
-    WP_USER_PASS=authorpass
-    WP_USER_EMAIL=author@student.42.fr
-
-    # --- FTP Server Setup ---
-    FTP_USER=ftpuser
-    FTP_PASS=ftppass
-
-    # --- FTP Passive Mode ---
-    # Vital for connecting from host (e.g. FileZilla/lftp)
-    # REPLACE THIS with your VM's IP address (run `hostname -I` to find it)
+    WP_URL=[https://login.42.fr](https://login.42.fr)
+    WP_ADMIN_USER=admin_username
+    WP_ADMIN_PASS=admin_password
+    WP_ADMIN_EMAIL=admin@email.com
+    WP_USER=subscriber_username
+    WP_USER_PASS=subscriber_password
+    WP_USER_EMAIL=subscriber@email.com
+    
+    # --- FTP Setup ---
+    FTP_USER=ftp_username
+    FTP_PASS=ftp_password
 ```
 
 ## Building and Launching
