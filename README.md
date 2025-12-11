@@ -44,15 +44,15 @@ This project relies on the official documentation of the following technologies:
 **Core Infrastructure:**
 * [Docker Engine](https://docs.docker.com/engine/) - The container runtime.
 * [Docker Compose](https://docs.docker.com/compose/) - Orchestration tool.
-* [Alpine Linux Wiki](https://wiki.alpinelinux.org/wiki/Main_Page) - Lightweight OS used for all containers.
+* [Alpine Linux](https://docs.alpinelinux.org/user-handbook/0.1a/index.html) - Lightweight OS used for all containers.
 * [PHP-FPM](https://www.php.net/manual/en/install.fpm.php) - FastCGI Process Manager for PHP.
 
 **Services:**
 * [NGINX](https://nginx.org/en/docs/) - Web server and reverse proxy.
 * [WordPress](https://wordpress.org/support/) - Content Management System.
-* [MariaDB KB](https://mariadb.com/kb/en/) - Relational database technical documentation.
+* [MariaDB](https://mariadb.com/docs/) - Relational database technical documentation.
 * [Redis](https://redis.io/docs/latest/) - In-memory data store (Bonus).
-* [vsftpd](https://security.appspot.com/vsftpd.html) - FTP server (Bonus).
+* [vsftpd](https://docs.rockylinux.org/10/guides/file_sharing/secure_ftp_server_vsftpd/) - FTP server (Bonus).
 * [Adminer](https://www.adminer.org/) - Database management tool (Bonus).
 * [Portainer](https://docs.portainer.io/) - Container management GUI (Bonus).
 
