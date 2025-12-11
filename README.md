@@ -16,13 +16,6 @@ The infrastructure includes:
 - **Static Website**: A custom static page (Bonus).
 
 ## Instructions
-
-### Prerequisites
-To run this project, you must have the following installed:
-- **Docker**
-- **Make**
-
-### Quick Start
 This project requires specific network and environment configurations before it can run.
 
 1.  **Configuration (Required):**
