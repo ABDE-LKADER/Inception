@@ -19,9 +19,8 @@ The infrastructure includes:
 This project requires specific network and environment configurations before it can run.
 
 1.  **Configuration (Required):**
-    You must set up your environment variables (secrets) and configure your network domains.
-    * For **Network/Host** setup, see **[User Documentation](USER_DOC.md)**.
-    * For **.env/Credentials** setup, see **[Developer Documentation](DEV_DOC.md)**.
+    You must set up your environment variables and network domains.
+    Please refer to the **[Developer Documentation](DEV_DOC.md)** for both `.env` creation and `/etc/hosts` configuration.
 
 2.  **Execution:**
     Once configured, use the Makefile to run the project:
